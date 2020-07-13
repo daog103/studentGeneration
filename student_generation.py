@@ -1,5 +1,6 @@
 import random
 import numpy as np
+#import table headings
 total_list = [['uni_email', 'password', 'firstname','middlename', 'surname', 'contact_email', 'phone_number', 'dob',
            'degree1_level', 'degree1_title', 'fos1', 'university1', 'completed1', 'graduation1', 'result1',
            'degree2_level', 'degree2_title', 'fos2', 'university2', 'completed2', 'graduation2',
@@ -116,7 +117,7 @@ ideal_student = ['oliver.s.graham@durham.ac.uk', 'aD<Dy5G4#y', 'Oliver', 'Samuel
                 None,None,None,None,None,None,None, 'French', 'Basic', 'Really bad getting this to 100 characters', None,None,None,
                 'Python', 'Intermediate', 'I\'m making this right now', None,None,None,None,None,None,None,None,None,'github.com', None, 
                 'Banking and Finance', 'Technology','Data Analyst', 'No', 'Yes', 'No', 'White Irish', 'Male', 
-                 'Heterosexual', 'Atheist']
+                 'Heterosexual', 'Atheist', '']
 for i in range(1000):
     total_list += [ideal_student]
 randomlist = random.sample(range(10, 30), 5)
@@ -174,221 +175,219 @@ sexual_orientation = ['Heterosexual', 'Homosexual', 'Bisexual', 'Asexual', 'Othe
 religion = ['Atheist', 'Christian', 'Muslim', 'Hindi', 'Buddist', 'Jewish', 'Agnostic']
 
 # First row, up to degree education randomised , change number range on a to change number of rows changed  
-for a in range(1,50):
-    length = random.randint(12,20)
-    string = random_string(length, True)
-    total_list[a][1] = string
-    string = '07' + str(random.randint(100000000,999999999))
-    total_list[a][6] = string
-    day = random.randint(1,32)
-    if day < 10:
+def create_list(length):
+    for i in range(length):
+        total_list += [ideal_student]
+    for a in range(1,length):
+        length = random.randint(12,20)
+        string = random_string(length, True)
+        total_list[a][1] = string
+        string = '07' + str(random.randint(100000000,999999999))
+        total_list[a][6] = string
+        day = random.randint(1,32)
+        if day < 10:
+            day = str(day)
+            day = '0' + day
         day = str(day)
-        day = '0' + day
-    day = str(day)
-    month = random.randint(1,13)
-    if month<10:
+        month = random.randint(1,13)
+        if month<10:
+            month = str(month)
+            month = '0' + month
         month = str(month)
-        month = '0' + month
-    month = str(month)
-    string = str(day)+ '/' + month + '/' + str(random.randint(1990, 2004))
-    total_list[a][7] = string
-    length = random.randint(10,20)
-    string = random_string(length)
-    prefix_length = random.randint(3,10)
-    prefix = random_string(prefix_length)
-    string += '@' + prefix + '.ac.uk'
-    total_list[a][0] = string
-    prefix_length = random.randint(3,10)
-    prefix = random_string(prefix_length)
-    string += '@' + prefix + '.co.uk'
-    total_list[a][5] = string
-    for i in range(3):
-        string = random_string(random.randint(6,15))
-        total_list[a][i+2] = string
-        if i == 1:
-            if random.randint(1,2) == 1:
-                total_list[a][i+2] = None
-    
+        string = str(day)+ '/' + month + '/' + str(random.randint(1990, 2004))
+        total_list[a][7] = string
+        length = random.randint(10,20)
+        string = random_string(length)
+        prefix_length = random.randint(3,10)
+        prefix = random_string(prefix_length)
+        string += '@' + prefix + '.ac.uk'
+        total_list[a][0] = string
+        prefix_length = random.randint(3,10)
+        prefix = random_string(prefix_length)
+        string += '@' + prefix + '.co.uk'
+        total_list[a][5] = string
+        for i in range(3):
+            string = random_string(random.randint(6,15))
+            total_list[a][i+2] = string
+            if i == 1:
+                if random.randint(1,2) == 1:
+                    total_list[a][i+2] = None
 
-    # Uni section - degree level Bachelor's, Master's etc - degree title random string - field of study pick of subjects - 
-    # university random from list - completed yes/no - graduation date - result choice of 1st, 21, 22, 3rd
-    for i in range(3):
-        idx = random.randint(0,2)
-        change = degree_level[idx]
-        total_list[a][(8 + 7*i)] = change
-        #degree title
-        length = random.randint(10,50)
-        change = random_string(length, True, True)
-        total_list[a][(9 + 7*i)] = change
-        #degree subject
-        idx = random.randint(0,len(subjects)-1)
-        change = subjects[idx]
-        total_list[a][(10 + 7*i)] = change
-        #university
-        idx = random.randint(0,len(universities_list)-1)
-        change = universities_list[idx]
-        total_list[a][(11+7*i)] = change
-        #finished?
-        if random.randint(0,1) == 1:
-            change = 'Yes'
-        else:
-            change = 'No'
-        total_list[a][(12+7*i)] = change
-        #graduation day
-        month = random.randint(0,13)
-        if month < 10:
+
+        # Uni section - degree level Bachelor's, Master's etc - degree title random string - field of study pick of subjects - 
+        # university random from list - completed yes/no - graduation date - result choice of 1st, 21, 22, 3rd
+        for i in range(3):
+            idx = random.randint(0,2)
+            change = degree_level[idx]
+            total_list[a][(8 + 7*i)] = change
+            #degree title
+            length = random.randint(10,50)
+            change = random_string(length, True, True)
+            total_list[a][(9 + 7*i)] = change
+            #degree subject
+            idx = random.randint(0,len(subjects)-1)
+            change = subjects[idx]
+            total_list[a][(10 + 7*i)] = change
+            #university
+            idx = random.randint(0,len(universities_list)-1)
+            change = universities_list[idx]
+            total_list[a][(11+7*i)] = change
+            #finished?
+            if random.randint(0,1) == 1:
+                change = 'Yes'
+            else:
+                change = 'No'
+            total_list[a][(12+7*i)] = change
+            #graduation day
+            month = random.randint(0,13)
+            if month < 10:
+                month = str(month)
+                month = '0' + month
             month = str(month)
-            month = '0' + month
-        month = str(month)
-        year = str(random.randint(2000, 2030))
-        change = month + '/' + year
-        total_list[a][(13 + 7*i)] = change
-        #result
-        idx = random.randint(0,3)
-        change = results[idx]
-        total_list[a][14 + 7*i] = change
-        #Accounting for people with one degree
-        if i ==1 and random.randint(1,6) == 4:
-            for j in range(7):
-                total_list[a][15+j] = [None]
-        if i ==2 and random.randint(1,2) == 2:
-            for j in range(7):
-                total_list[a][22+j]
-            
-    
-   # A level and GCSE education start questions before results
-    total_list[a][29] = random_string(random.randint(7,20))
-    total_list[a][30] = a_level_countries[random.randint(0,3)]
-    total_list[a][31] = a_level_institution_type[random.randint(0,2)]
-    for k in range(32,34):
-        year, month = random.randint(2000,2020), random.randint(1,12)
-        if month < 10:
-            month =str(month)
-            month = '0' + month
-        year, month = str(year), str(month)
-        date = month + '/' + year
-        total_list[a][k] = date
-    total_list[a][46] = random_string(random.randint(7,20))
-    total_list[a][47] = a_level_countries[random.randint(0,3)]
-    total_list[a][48] = a_level_institution_type[random.randint(0,2)]
-    #A level results
-    for i in range(34,46,3):
-        total_list[a][i] = a_level_type[random.randint(0,3)]
-        total_list[a][i+1] = subjects[random.randint(0,11)]
-        total_list[a][i+2] = a_level_grade[random.randint(0,7)]
-        if i ==43 and random.randint(0,1) == 1:
-            total_list[a][43] = None
-            total_list[a][44] = None
-            total_list[a][45] = None
-    for i in range(49,91,3):
-        total_list[a][i] = gcse_type[random.randint(0,1)]
-        total_list[a][i+1] = subjects[random.randint(0,11)]
-        total_list[a][i+2] = gcse_grade[random.randint(0,16)]
-    
-    #Work experience
-    for i in range(2):
-        total_list[a][91 + 7*i] = we_type[random.randint(0,3)]
-        total_list[a][92 + 7*i] = random_string(random.randint(5,20))
-        total_list[a][93+ 7*i] = we_role[random.randint(0,4)]
-        month, year = random.randint(1,12), random.randint(1990, 2020)
-        month2, year2 = random.randint(1,12), random.randint(1990, 2020)
-        if month < 10:
-            month = str(month)
-            month = '0' + month
-        year, month = str(year), str(month)
-        if month2 < 10:
-            month2 = str(month2)
-            month2 = '0' + month2
-        year2, month2 = str(year2), str(month2)
-        if year > year2:
-            total_list[a][94 + 7*i] = month2 + '/' + year2
-            total_list[a][95 + 7*i] = month + '/' + year
-        elif year2 > year:
-            total_list[a][94 + 7*i] = month + '/' + year
-            total_list[a][95 + 7*i] = month2 + '/' + year2
-        else:
-            if month2 > month:
+            year = str(random.randint(2000, 2030))
+            change = month + '/' + year
+            total_list[a][(13 + 7*i)] = change
+            #result
+            idx = random.randint(0,3)
+            change = results[idx]
+            total_list[a][14 + 7*i] = change
+            #Accounting for people with one degree
+            if i ==1 and random.randint(1,6) == 4:
+                for j in range(7):
+                    total_list[a][15+j] = [None]
+            if i ==2 and random.randint(1,2) == 2:
+                for j in range(7):
+                    total_list[a][22+j]
+
+
+       # A level and GCSE education start questions before results
+        total_list[a][29] = random_string(random.randint(7,20))
+        total_list[a][30] = a_level_countries[random.randint(0,3)]
+        total_list[a][31] = a_level_institution_type[random.randint(0,2)]
+        for k in range(32,34):
+            year, month = random.randint(2000,2020), random.randint(1,12)
+            if month < 10:
+                month =str(month)
+                month = '0' + month
+            year, month = str(year), str(month)
+            date = month + '/' + year
+            total_list[a][k] = date
+        total_list[a][46] = random_string(random.randint(7,20))
+        total_list[a][47] = a_level_countries[random.randint(0,3)]
+        total_list[a][48] = a_level_institution_type[random.randint(0,2)]
+        #A level results
+        for i in range(34,46,3):
+            total_list[a][i] = a_level_type[random.randint(0,3)]
+            total_list[a][i+1] = subjects[random.randint(0,11)]
+            total_list[a][i+2] = a_level_grade[random.randint(0,7)]
+            if i ==43 and random.randint(0,1) == 1:
+                total_list[a][43] = None
+                total_list[a][44] = None
+                total_list[a][45] = None
+        for i in range(49,91,3):
+            total_list[a][i] = gcse_type[random.randint(0,1)]
+            total_list[a][i+1] = subjects[random.randint(0,11)]
+            total_list[a][i+2] = gcse_grade[random.randint(0,16)]
+
+        #Work experience
+        for i in range(2):
+            total_list[a][91 + 7*i] = we_type[random.randint(0,3)]
+            total_list[a][92 + 7*i] = random_string(random.randint(5,20))
+            total_list[a][93+ 7*i] = we_role[random.randint(0,4)]
+            month, year = random.randint(1,12), random.randint(1990, 2020)
+            month2, year2 = random.randint(1,12), random.randint(1990, 2020)
+            if month < 10:
+                month = str(month)
+                month = '0' + month
+            year, month = str(year), str(month)
+            if month2 < 10:
+                month2 = str(month2)
+                month2 = '0' + month2
+            year2, month2 = str(year2), str(month2)
+            if year > year2:
+                total_list[a][94 + 7*i] = month2 + '/' + year2
+                total_list[a][95 + 7*i] = month + '/' + year
+            elif year2 > year:
                 total_list[a][94 + 7*i] = month + '/' + year
                 total_list[a][95 + 7*i] = month2 + '/' + year2
             else:
-                total_list[a][94 + 7*i] = month + '/' + year
-                total_list[a][95 + 7*i] = month2 + '/' + year2
+                if month2 > month:
+                    total_list[a][94 + 7*i] = month + '/' + year
+                    total_list[a][95 + 7*i] = month2 + '/' + year2
+                else:
+                    total_list[a][94 + 7*i] = month + '/' + year
+                    total_list[a][95 + 7*i] = month2 + '/' + year2
 
-        total_list[a][96 + 7*i] = 'Yes'
-        total_list[a][97 + 7*i] = random_string(random.randint(10,50), False, True)
-    #Languages
-        total_list[a][105 + 3*i] = languages[random.randint(0,7)]
-        total_list[a][106 + 3*i] = proficiency[random.randint(0,2)]
-        total_list[a][107 + 3*i] = random_string(random.randint(10,50), False, True)
-        status = random.randint(0,2)
-        if status == 1:
-            for j in range(105,111):
-                total_list[a][j] = None
-        elif status == 2:
-            for j in range(108,111):
-                total_list[a][j] = None
-        
-    #Skills
-    for i in range(4):
-        total_list[a][111 + 3*i] = skills[random.randint(0,5)]
-        total_list[a][112 + 3*i] = proficiency[random.randint(0,2)]
-        total_list[a][113 + 3*i] = random_string(random.randint(10,50))
-    for s in range(111+3*random.randint(0,4),123):
-        total_list[a][s] = None
-        
-    #Links starts with www or https:/ then random string with at least 1 '.'
-    for i in range(2):
-        link = 'www.' + random_string(random.randint(10,20)) + '.co.uk'
-        total_list[a][123+i] = link
+            total_list[a][96 + 7*i] = 'Yes'
+            total_list[a][97 + 7*i] = random_string(random.randint(10,50), False, True)
+        #Languages
+            total_list[a][105 + 3*i] = languages[random.randint(0,7)]
+            total_list[a][106 + 3*i] = proficiency[random.randint(0,2)]
+            total_list[a][107 + 3*i] = random_string(random.randint(10,50), False, True)
+            status = random.randint(0,2)
+            if status == 1:
+                for j in range(105,111):
+                    total_list[a][j] = None
+            elif status == 2:
+                for j in range(108,111):
+                    total_list[a][j] = None
+
+        #Skills
+        for i in range(4):
+            total_list[a][111 + 3*i] = skills[random.randint(0,5)]
+            total_list[a][112 + 3*i] = proficiency[random.randint(0,2)]
+            total_list[a][113 + 3*i] = random_string(random.randint(10,50))
+        for s in range(111+3*random.randint(0,4),123):
+            total_list[a][s] = None
+
+        #Links starts with www or https:/ then random string with at least 1 '.'
+        for i in range(2):
+            link = 'www.' + random_string(random.randint(10,20)) + '.co.uk'
+            total_list[a][123+i] = link
+
+        #Industries
+        no_of_industries = random.randint(0,5)
+        industries_interested = []
+        for i in range(no_of_industries):
+            industries_interested.append(industries[random.randint(0,5)])
+        total_list[a][125] = industries_interested
+        #roles
+        no_of_macro = random.randint(0,4)
+        macro_interested = []
+        for i in range(no_of_macro):
+            macro_interested.append(macro_roles[random.randint(0,3)])
+        total_list[a][126] = macro_interested
+        no_of_micro = random.randint(0,4)
+        micro_interested = []
+        for i in range(no_of_micro):
+            micro_interested.append(micro_roles[random.randint(0,3)])
+        total_list[a][127] = micro_interested
+        if random.randint(0,1) == 1:
+            total_list[a][128] = 'Yes'
+        else:
+            total_list[a][128] = 'No'
+        if random.randint(0,1) == 1:
+            total_list[a][129] = 'Yes'
+        else:
+            total_list[a][129] = 'No'
+        if random.randint(0,1) == 1:
+            total_list[a][130] = 'Yes'
+        else:
+            total_list[a][130] = 'No'
+
+        #ethnic group
+        total_list[a][131] = ethnic_group[random.randint(0,3)]
+        #gender
+        total_list[a][132] = gender[random.randint(0,3)]
+        #sex orientation
+        total_list[a][133] = sexual_orientation[random.randint(0,5)]
+        #religion
+        total_list[a][134] = religion[random.randint(0,6)]
+    return total_list
     
-    #Industries
-    no_of_industries = random.randint(0,5)
-    industries_interested = []
-    for i in range(no_of_industries):
-        industries_interested.append(industries[random.randint(0,5)])
-    total_list[a][125] = industries_interested
-    #roles
-    no_of_macro = random.randint(0,4)
-    macro_interested = []
-    for i in range(no_of_macro):
-        macro_interested.append(macro_roles[random.randint(0,3)])
-    total_list[a][126] = macro_interested
-    no_of_micro = random.randint(0,4)
-    micro_interested = []
-    for i in range(no_of_micro):
-        micro_interested.append(micro_roles[random.randint(0,3)])
-    total_list[a][127] = micro_interested
-    if random.randint(0,1) == 1:
-        total_list[a][128] = 'Yes'
-    else:
-        total_list[a][128] = 'No'
-    if random.randint(0,1) == 1:
-        total_list[a][129] = 'Yes'
-    else:
-        total_list[a][129] = 'No'
-    if random.randint(0,1) == 1:
-        total_list[a][130] = 'Yes'
-    else:
-        total_list[a][130] = 'No'
-    
-    #ethnic group
-    total_list[a][131] = ethnic_group[random.randint(0,3)]
-    #gender
-    total_list[a][132] = gender[random.randint(0,3)]
-    #sex orientation
-    total_list[a][133] = sexual_orientation[random.randint(0,5)]
-    #religion
-    total_list[a].append(religion[random.randint(0,6)])
         
         
-        
-        
-        
-        
-        
-        
+           
        
-#testing print statements:       
-print(total_list[0][123])        
-for i in range(100,135):
-    print(total_list[0][i],':', total_list[1][i])
+
+print(total_list[5][42])
