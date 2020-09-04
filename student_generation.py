@@ -614,5 +614,8 @@ for a in range(1, len(total_dict)):
         total_dict[a]["we" + str(p)+"_end_month"] = month_1
         total_dict[a]["we" + str(p)+"_end_year"] = year_1
         total_dict[a]["we"+str(p) + "_location"] = random_string(random.randint(5, 20))
+        total_dict[a]["we"+str(p)+"_start_day"] = random.randint(1,28)
+        total_dict[a]["we"+str(p)+"_end_day"] = random.randint(1,28)
         
 total_dict.pop(0)
+print(total_dict[0])
