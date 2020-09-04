@@ -514,8 +514,16 @@ def create_list(length):
     return total_list
     
         
-        
-           
+randomlist = random.sample(range(10, 30), 5)
+alphabet ='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890.'
+alphabet_with_symbols = alphabet + ',?@/\!-_+=()[]&*%$\'<>#'
+letter_list, letter_symbol_list = [], []
+def random_string(length):
+    return_string = ''
+    random_list = random.sample(range(53), length)
+    for number in random_list:
+        return_string += alphabet[number]
+    return return_string
        
 
 total_list = create_list(10)
@@ -562,7 +570,7 @@ for a in range(len(total_list)-1, 0, -1):
 #             total_list[a][i+1] = total_list[a][:32] + [month_1, year_1, month_2, year_2] + total_list[a][34:]
         student_dict[total_list[0][i]] = total_list[a][i]
     total_dict.append(student_dict)
-for a in range(2, len(total_dict)):
+for a in range(1, len(total_dict)):
     #print(a)
     for j in range(len(total_dict[a]["alevel_start"])):
         if total_dict[a]["alevel_start"][j] == "/":
@@ -605,6 +613,6 @@ for a in range(2, len(total_dict)):
                     year_1 = total_dict[a]["we" + str(p)+"_end_date"][j+1:]
         total_dict[a]["we" + str(p)+"_end_month"] = month_1
         total_dict[a]["we" + str(p)+"_end_year"] = year_1
+        total_dict[a]["we"+str(p) + "_location"] = random_string(random.randint(5, 20))
         
 total_dict.pop(0)
-print(total_dict[0])

@@ -34,4 +34,4 @@
          'firstname': 'EdgUfrkXT', 'password': 'GiM!Dk9xlrfajUB', 'a_level_start_month': 'January', 'a_level_start_year': '2018', 'a_level_end_month': 'June',
           'a_level_end_year': '2011', 'graduation_month1': 'July', 'graduation_year1': '2022', 'graduation_month2': 'May', 'graduation_year2': '2021', 
           'graduation_month3': 'May', 'graduation_year3': '2024', 'we1_start_month': 'May', 'we1_start_year': '2017', 'we1_end_month': 'March', 'we1_end_year': 
-          '2020', 'we2_start_month': 'November', 'we2_start_year': '2014', 'we2_end_month': 'September', 'we2_end_year': '2015'}
+          '2020', 'we1_location':'hsdfsdfhdsfASDAD', 'we2_start_month': 'November', 'we2_start_year': '2014', 'we2_end_month': 'September', 'we2_end_year': '2015', 'we2_location':'AWDSsadjsakdj'}
