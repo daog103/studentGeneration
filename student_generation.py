@@ -23,8 +23,8 @@ def create_list(length):
                'skill1_name', 'skill1_proficiency', 'skill1_description', 'skill2_name', 'skill2_proficiency', 'skill2_description',
                'skill3_name', 'skill3_proficiency', 'skill3_description', 'skill4_name', 'skill4_proficiency', 'skill4_description',
                'student_link1', 'student_link2', 'industries_interested', 'macro_roles', 'micro_roles', 'school_meals?', 
-               'parents_education?', 'disability?', 'ethinic_group', 'gender', 'sexual_orientation', 'religion', 'completed_1', 
-                  'completed_2', 'completed_3', 'link_1_type', 'link_2_type']]
+               'parents_education?', 'disability?', 'ethinic_group', 'gender', 'sexual_orientation', 'religion', 'year_of_study_1', 
+                  'year_of_study_2', 'year_of_study_3', 'link_1_type', 'link_2_type']]
 
     universities = """Abertay University , Aberystwyth University , AECC University College , Anglia Ruskin University , Aston University ,
                     Bangor University , Bath Spa University , Birkbeck College , Birmingham City University , Bishop Grosseteste University ,
@@ -607,4 +607,4 @@ for a in range(2, len(total_dict)):
         total_dict[a]["we" + str(p)+"_end_year"] = year_1
         
 total_dict.pop(0)
-print(total_dict)
+print(total_dict[0])
