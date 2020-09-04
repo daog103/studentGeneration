@@ -311,8 +311,8 @@ def create_list(length):
     sexual_orientation = ['Heterosexual', 'Homosexual', 'Bisexual', 'Asexual', 'Other', 'Prefer not to say']
     religion = ["Atheist", "Christian", "Muslim", "Hindu", "Sikh", "Buddhist", "Jewish", "Jain", "Bahai", "Other"]
     # First row, up to degree education randomised , change number range on a to change number of rows changed  
-    for i in range(length):
-        total_list += [ideal_student]
+    # for i in range(length):
+    #     total_list += [ideal_student]
     for a in range(1,length):
         length = random.randint(12,20)
         string = random_string(length, True)
@@ -519,6 +519,7 @@ def create_list(length):
        
 
 total_list = create_list(10)
+print(len(total_list))
 for i in range(len(total_list)):
     total_list[i] = total_list[i][:126] + total_list[i][127:]
 # total_list[0] = total_list[0][:12] + ["graduation_month_1", "graduation_year_1"] + total_list[0][14:20] + ["graduation_month_2", "graduation_year_2"]+ total_list[0][21:27] + ["graduation_month_3", "graduation_year_3"] + total_list[0][28:32] + ["a_level_start_month", "a_level_start_year", "a_level_end_month", "a_level_end_year"]  + total_list[0][34:94] + ["we_start_month_1", "we_start_year_1", "we_end_month_1", "we_end_year_1"] + total_list[0][96:102] + ["we_start_month_2", "we_start_year_2", "we_end_month_2", "we_end_year_2"] + total_list[0][104:]
@@ -605,11 +606,5 @@ for a in range(2, len(total_dict)):
         total_dict[a]["we" + str(p)+"_end_month"] = month_1
         total_dict[a]["we" + str(p)+"_end_year"] = year_1
         
-    
-    
-print(total_dict[2])
-#print(total_list)
-# with open("students.csv", "w", newline="") as f:
-#     writer = csv.writer(f)
-#     for row in total_list:
-#         writer.writerow(row)
+total_dict.pop(0)
+print(total_dict)
