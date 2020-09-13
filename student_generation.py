@@ -1,5 +1,6 @@
 import random
 import csv
+import get_all_data
 #import table headings
 def create_list(length):
     total_list = [['uni_email', 'password', 'firstname','middlename', 'surname', 'contact_email', 'phone_number', 'dob',
@@ -571,6 +572,7 @@ for a in range(len(total_list)-1, 0, -1):
         student_dict[total_list[0][i]] = total_list[a][i]
     total_dict.append(student_dict)
 for a in range(1, len(total_dict)):
+    yes_or_no = ["yes","no"]
     #print(a)
     for j in range(len(total_dict[a]["alevel_start"])):
         if total_dict[a]["alevel_start"][j] == "/":
@@ -584,6 +586,8 @@ for a in range(1, len(total_dict)):
     total_dict[a]["a_level_start_year"] = year_1
     total_dict[a]["a_level_end_month"] = month_2
     total_dict[a]["a_level_end_year"] = year_2
+    total_dict[a]["visa"] = yes_or_no[random.randint(0,1)]
+    total_dict[a]["allowed_to_work"] = yes_or_no[random.randint(0,1)]
     
     #Looping thorugh all of the graduation dates (3)
     for p in range(1,4):
@@ -619,3 +623,367 @@ for a in range(1, len(total_dict)):
         
 total_dict.pop(0)
 print(total_dict[0])
+{'hex': '#dd59be', 'degree_name': 'Physics Bsc', 'university': 'University of Durham', 'year_of_study': 'Completed', 'test_taken': 'false', 'test_score': 'n_a', 'has_cv': 'false', 
+'roles': ['Commercial Banking - General', 'Law - General', 'Marketing - General'],
+ 'past_education': {'completed_degrees': [{'degree_level': 'Bachelors', 'degree_name': 'Physics Bsc', 'university': 'University of Durham', 'year_of_study': 'Completed', 'grade': '1st', 
+ 'graduation_month': 'September', 'graduation_year': 2018}], 'a_levels': {'institution_name': 'St Marys School', 'country': 'United Kingdom', 'grades': 
+ [{'qualification_type': 'A Level', 'subject': 'Physics', 'grade': 'A*'}, {'qualification_type': 'A Level', 'subject': 'Chemistry', 'grade': 'A*'},
+  {'qualification_type': 'A Level', 'subject': 'Mathematics', 'grade': 'A*'}]}, 'gcses': {'institution_name': 'St Marys School',
+   'grades': [{'qualification_type': 'GCSE', 'subject': 'Physics', 'grade': 'A*'}, {'qualification_type': 'GCSE', 'subject': 'English Language', 'grade': 'A*'}]}},
+    'skills': [{'skill_name': 'Critical Thinking', 'proficiency': 'advanced', 'description': 'I can think critically at any situation.'}, {'skill_name': 'Data Analysis',
+     'proficiency': 'intermediate', 'description': 'Having done Physics, I can analyse large data sets effectively, gaining great insight.'},
+      {'skill_name': 'Communication', 'proficiency': 'advanced', 'description': 'Having been a tutor and been a part of many executive teams at university, I am very effective at communicating advanced ideas as part of a small or large team.'}, 
+      {'skill_name': 'Software Testing', 'proficiency': 'intermediate', 'description': 'I have tested lots of software'},
+       {'skill_name': 'Python', 'proficiency': 'advanced', 'description': 'Very experienced using Python on a variety of modules, and projects.'},
+        {'skill_name': 'JavaScript', 'proficiency': 'intermediate', 'description': 'I have some experience building programs on JS having helped build this website.'},
+         {'skill_name': 'Analytical Reasoning', 'proficiency': 'intermediate', 'description': 'I am a very analytically focussed person.'}, 
+         {'skill_name': 'Amazon Web Services', 'proficiency': 'intermediate', 'description': 'I have great experience using the following AWS services: Lambda, S3, API Gateway, Cognito and SQS. Having learned and got experience all in the space of 2 months. This website uses all of these services.'}], 
+         'experience': [{'type': 'Internship', 'organisation_name': 'Internly', 'role': 'Software Developer', 'location': 'Newcastle', 'start_month': 6, 'end_month': 7, 'start_year': 2020, 'end_year': 2020, 'description': 'I worked as a software developer at Internly'}], 
+         'languages': [{'language_name': 'Afrikaans', 'proficiency': 'native/bilingual', 'description': 'Testing that it works'}], 
+         'links': [], 'industries': ['Academia', 'Agriculture', 'Architecture', 'Art', 'Banking & Finance', 'Consulting', 'Professional Services', 'Marketing', 'Media', 'HR', 'Consumer & Retail', 'Automotive & Transport', 'Charity & Public Sector', 'Education', 'Energy', 'Engineering & Industrial', 'Hospitality', 'Insurance', 'Law', 'Pharmaceutical', 'Property & Construction', 'Supply Chain and Logistics', 'Other Sectors'], 
+         'visa': 'no', 'allowed_to_work': 'yes'}
+print(get_all_data.get_data(1))
+month_to_number = {"January": "01", "February": "02", "March": "03", "April": "04", "May": "05", "June" : "06", "July": "07", "August": "08", "September": "09", "October": "10", "November": "11", "December": "12"}
+starting_student_id = 1 #"ADD VALUE HERE"
+for i in range(len(total_dict)):
+    #current student is generated, db_student is what the student looks like in the database
+    current_student = total_dict[i]
+    db_student = get_all_data.get_data(starting_student_id)
+
+    #Personal Information check first
+    if current_student["firstname"] != db_student["personal_info"]["first_name"]:
+        print("first name", "\n generated", current_student["firstname"] ,"\n db", db_student["personal_info"]["first_name"])
+        break
+    if current_student["middlename"] != db_student["personal_info"]["middle_name"]:
+        print("middle name", "\n generated", current_student["middlename"] , "\n db", db_student["personal_info"]["middle_name"])
+        break
+    if current_student["surname"] != db_student["personal_info"]["last_name"]:
+        print("last name", "\n generated", current_student["surname"] , "\n db", db_student["personal_info"]["last_name"])
+        break
+    if current_student["contact_email"] != db_student["personal_info"]["contact_email"]:
+        print("contact email", "\n generated", current_student["contact_email"] , "\n db", db_student["personal_info"]["contact_email"])
+        break
+    if current_student["phone_number"] != db_student["personal_info"]["phone_number"]:
+        print("phone number", "\n generated", current_student["phone_number"] , "\n db", db_student["personal_info"]["phone_number"])
+        break
+
+    #Generated dob has month as full name but db will need it in number so need to convert
+    generated_month = current_student["dob"][3:-3]
+    month_num = month_to_number[generated_month]
+    current_student["dob"] = current_student[:3] + month_num + current_student[-3:]
+    if current_student["dob"] != db_student["dob"]:
+        print("date of birth", "\n generated",  current_student["dob"] ,"\n db", db_student["dob"])
+        break
+
+    #Check university stuff
+    if current_student["degree3_title"] == "":
+        if current_student["degree2_title"] == "":
+            number_of_degrees = 1
+        else:
+            number_of_degrees = 2
+    else:
+        number_of_degrees = 3
+    
+    #Loop through all of the degrees
+    #The degrees should be in the same order in both but that can be tested
+    degrees_error = False
+    for i in range(number_of_degrees):
+        #title
+        if current_student["degree" + str(i) + "_title"] != db_student["past_education"]["completed_degrees"][i]["degree_name"]:
+            print("degree" + str(i) + "title", "\n generated", current_student["degree" + str(i) + "_title"], "\n db", db_student["past_education"]["completed_degrees"][i]["degree_name"])
+            degrees_error = True
+        #level
+        if current_student["degree" + str(i) + "_level"] != db_student["past_education"]["completed_degrees"][i]["degree_level"]:
+            print("degree" + str(i) + "level", "\n generated", current_student["degree" + str(i) + "_level"], "\n db", db_student["past_education"]["completed_degrees"][i]["degree_level"])
+            degrees_error = True
+        #uni
+        if current_student["university" + str(i)] != db_student["past_education"]["completed_degrees"][i]["university"]:
+            print("university" + str(i), "\n generated", current_student["university" + str(i)], "\n db", db_student["past_education"]["completed_degrees"][i]["university"])
+            degrees_error = True
+        #field of study
+        if current_student["fos" + str(i)] != db_student["past_education"]["completed_degrees"][i]["field_of_study"]:
+            print("fos" + str(i), "\n generated", current_student["fos" + str(i)], "\n db", db_student["past_education"]["completed_degrees"][i]["field_of_study"])
+            degrees_error = True
+        #graduation month
+        if current_student["graduation_month" + str(i)] != db_student["past_education"]["completed_degrees"][i]["graduation_month"]:
+            print("graduation month" + str(i), "\n generated", current_student["graduation_month" + str(i)], "\n db", db_student["past_education"]["completed_degrees"][i]["graduation_month"])
+            degrees_error = True
+        #graduation year
+        if current_student["graduation_year" + str(i)] != db_student["past_education"]["completed_degrees"][i]["graduation_year"]:
+            print("graduation year"+str(i), "\n generated", current_student["graduation_year" + str(i)], "\n db", db_student["past_education"]["completed_degrees"][i]["graduation_year"])
+            degrees_error = True
+        #completed
+        if current_student["completed"+str(i)] != db_student["past_education"]["completed_degrees"][i]["completed"]:
+            print("degree" + str(i) + "title", "\n generated", current_student["degree" + str(i) + "_title"], "\n db", db_student["past_education"]["completed_degrees"][i]["completed"])
+            degrees_error = True
+    
+    if degrees_error == True:
+        break
+
+    #Check the a level info in personal data table
+    if current_student["alevel_institution"] != db_student["past_education"]["a_levels"]["institution_name"]:
+        print("a level inst name", "\n", "generated", current_student["alevel_institution"], "\n", "db", db_student["past_education"]["a_levels"]["institution_name"])
+        break
+
+    if current_student["alevel_country"] != db_student["past_education"]["a_levels"]["country"]:
+        print("a level coutnry", "\n", "generated", current_student["alevel_country"], "\n", "db", db_student["past_education"]["a_levels"]["country"])
+        break
+    
+    if current_student["alevel_institution_type"] != db_student["past_education"]["a_levels"]["institution_type"]:
+        print("a level inst type", "\n", "generated", current_student["alevel_institution_type"], "\n", "db", db_student["past_education"]["a_levels"]["institution_type"])
+        break
+
+    #Putting month and year in different variables in current student
+    start_date, end_date = current_student["alevel_start"], current_student["alevel_end"]
+    start_date_list, end_date_list = start_date.split("/"), end_date.split("/")
+    start_month, start_year, end_month, end_year = start_date_list[0], start_date_list[1], end_date_list[0], end_date_list[1]
+
+    if start_month != db_student["past_education"]["a_levels"]["start_month"]:
+        print("a level start month", "\n", "generated", start_month, "\n", "db", db_student["past_education"]["a_levels"]["start_month"])
+        break
+
+    if start_year != db_student["past_education"]["a_levels"]["start_year"]:
+        print("a level start year", "\n", "generated", start_year, "\n", "db", db_student["past_education"]["a_levels"]["start_year"])
+        break
+
+    if end_month != db_student["past_education"]["a_levels"]["end_month"]:
+        print("a level end month", "\n", "generated", end_month, "\n", "db", db_student["past_education"]["a_levels"]["end_month"])
+        break
+
+    if end_year != db_student["past_education"]["a_levels"]["end_year"]:
+        print("a level end year", "\n", "generated", end_year, "\n", "db", db_student["past_education"]["a_levels"]["end_year"])
+        break
+    
+    #A levels check
+    for i in range(6,0,-1):
+        if current_student["alevel_q"+ str(i)+ "_type"] == None:
+            continue
+        else:
+            number_of_a_levels = i
+            break
+
+    #Loop through the a levels max 6
+    #Again presuming they are in the same order which I believe is fair
+    for i in range(number_of_a_levels):
+        if current_student["alevel_q"+ str(i)+ "_type"] != db_student["past_education"]["a_levels"]["grades"][i]["qualification_type"]:
+            print("a level type" + str(i), "\n", "generated", current_student["alevel_q"+ str(i)+ "_type"], "\n", "db", db_student["past_education"]["a_levels"][i]["qualification_type"])
+            break
+
+        if current_student["alevel_q"+ str(i)+ "_subject"] != db_student["past_education"]["a_levels"]["grades"][i]["subject"]:
+            print("a level subject" + str(i), "\n", "generated", current_student["alevel_q"+ str(i)+ "_subject"], "\n", "db", db_student["past_education"]["a_levels"][i]["subject"])
+            break
+
+        if current_student["alevel_q"+ str(i)+ "_grade"] != db_student["past_education"]["a_levels"]["grades"][i]["grade"]:
+            print("a level grade" + str(i), "\n", "generated", current_student["alevel_q"+ str(i)+ "_grade"], "\n", "db", db_student["past_education"]["a_levels"][i]["grade"])
+            break
+    
+    #Gcses similar to a levels
+    if current_student["gcse_institution"] != db_student["past_education"]["gcses"]["institution_name"]:
+        print("gcse inst name", "\n", "generated", current_student["gcse_institution"], "\n", "db", db_student["past_education"]["gcses"]["institution_name"])
+        break
+
+    if current_student["gcse_institution_type"] != db_student["past_education"]["gcses"]["institution_type"]:
+        print("gcse coutnry", "\n", "generated", current_student["gcse_institution_type"], "\n", "db", db_student["past_education"]["gcses"]["institution_type"])
+        break
+    
+    if current_student["gcse_country"] != db_student["past_education"]["gcses"]["institution_country"]:
+        print("gcse inst type", "\n", "generated", current_student["gcse_country"], "\n", "db", db_student["past_education"]["gcses"]["institution_country"])
+        break
+
+    #Loop through gcses max 14
+    for i in range(14,0,-1):
+        if current_student["gcse_q"+ str(i)+ "_type"] == None:
+            continue
+        else:
+            number_of_gcses = i
+            break
+    
+    for i in range(number_of_gcses):
+        if current_student["gcse_q"+ str(i)+ "_type"] != db_student["past_education"]["gcses"]["grades"][i]["qualification_type"]:
+            print("gcse type" + str(i), "\n", "generated", current_student["gcse_q"+ str(i)+ "_type"], "\n", "db", db_student["past_education"]["gcses"]["grades"][i]["qualification_type"])
+            break
+
+        if current_student["gcse_q"+ str(i)+ "_subject"] != db_student["past_education"]["gcses"]["grades"][i]["subject"]:
+            print("gcse subject" + str(i), "\n", "generated", current_student["gcse_q"+ str(i)+ "_subject"], "\n", "db", db_student["past_education"]["gcses"]["grades"][i]["subject"])
+            break
+
+        if current_student["gcse_q"+ str(i)+ "_grade"] != db_student["past_education"]["gcses"]["grades"][i]["grade"]:
+            print("gcse grade" + str(i), "\n", "generated", current_student["gcse_q"+ str(i)+ "_grade"], "\n", "db", db_student["past_education"]["gcses"]["grades"][i]["grade"])
+            break
+    
+    #Work Experience max 2
+    for i in range(2,0,-1):
+        if current_student["we"+ str(i)+ "_description"] == None:
+            continue
+        else:
+            number_of_wes = i
+            break
+    
+    for i in range(number_of_wes):
+        
+        if current_student["we"+ str(i)+ "_type"] != db_student["experience"][i]["type"]:
+            print("we type" + str(i), "\n", "generated", current_student["we"+ str(i)+ "_type"], "\n", "db", db_student["experience"][i]["type"])
+            break
+
+        if current_student["we"+ str(i)+ "_company_name"] != db_student["experience"][i]["organisation_name"]:
+            print("we organisation" + str(i), "\n", "generated", current_student["we"+ str(i)+ "_company_name"], "\n", "db", db_student["experience"][i]["oraganisation_name"])
+            break
+
+        if current_student["we"+ str(i)+ "_role"] != db_student["experience"][i]["role"]:
+            print("we role" + str(i), "\n", "generated", current_student["we"+ str(i)+ "_role"], "\n", "db", db_student["experience"][i]["role"])
+            break
+
+        if current_student["we"+ str(i)+ "_description"] != db_student["experience"][i]["description"]:
+            print("we description" + str(i), "\n", "generated", current_student["we"+ str(i)+ "_description"], "\n", "db", db_student["experience"][i]["description"])
+            break
+
+        #Need to split the dates to be month and year inside the loop
+        #Changing the dates from individual ints to one string for start and end dates
+        if int(current_student["we"+str(i)+"start_day"]) < 10:
+            current_student["we"+str(i)+"start_day"] = "0" + str(current_student["we"+str(i)+"start_day"])
+
+        if int(current_student["we"+str(i)+"start_month"]) < 10:
+            current_student["we"+str(i)+"start_month"] = "0" + str(current_student["we"+str(i)+"start_month"])
+        
+        if int(current_student["we"+str(i)+"end_day"]) < 10:
+            current_student["we"+str(i)+"end_day"] = "0" + str(current_student["we"+str(i)+"end_day"])
+        
+        if int(current_student["we"+str(i)+"end_month"]) < 10:
+            current_student["we"+str(i)+"end_month"] = "0" + str(current_student["we"+str(i)+"end_month"])
+        
+        we_start_date = current_student["we"+str(i)+"start_day"] + "/" + current_student["we"+str(i)+"start_month"] + "/" + current_student["we"+str(i)+"start_year"]
+
+        we_end_date = current_student["we"+str(i)+"end_day"] + "/" + current_student["we"+str(i)+"end_month"] + "/" + current_student["we"+str(i)+"end_year"]
+        
+        #So if still_working is True, then the end date should be 01/01/1900
+        if current_student["we" + str(i) + "_still_working"] == "yes":
+            we_end_date = "01/01/1900"
+
+        if current_student["we"+ str(i)+ "_start_date"] != db_student["experience"][i]["start_date"]:
+            print("we start date" + str(i), "\n", "generated", current_student["we"+ str(i)+ "_start_date"], "\n", "db", db_student["experience"][i]["start_date"])
+            break
+
+        if current_student["we"+ str(i)+ "_end_date"] != db_student["experience"][i]["end_date"]:
+            print("we end date" + str(i), "\n", "generated", current_student["we"+ str(i)+ "_end_date"], "\n", "db", db_student["experience"][i]["end_date"])
+            break
+
+        #Languages
+        if current_student["language2_name"] != "":
+            number_of_langs = 2
+        elif current_student["language1_name"] != "":
+            number_of_langs = 1
+        else:
+            number_of_langs = 0
+        #Possibility of having no languages
+        if number_of_langs> 0:
+            for i in range(number_of_langs):
+                if current_student["language" + str(i) + "_name"] != db_student["languages"][i]["language_name"]:
+                    print("language name " + str(i), "\n", "generated", current_student["language" + str(i) + "_name"], "\n", "db", db_student["languages"][i]["language_name"])
+                    break
+
+                if current_student["language" + str(i) + "_proficiency"] != db_student["languages"][i]["proficiency"]:
+                    print("language proficiency " + str(i), "\n", "generated", current_student["language" + str(i) + "_proficiency"], "\n", "db", db_student["languages"][i]["language_proficiency"])
+                    break
+
+                if current_student["language" + str(i) + "_description"] != db_student["languages"][i]["description"]:
+                    print("language desc " + str(i), "\n", "generated", current_student["language" + str(i) + "_description"], "\n", "db", db_student["languages"][i]["language_description"])
+                    break
+        
+        #Skills
+        for i in range(4,0,-1):
+            if current_student["skill" + str(i) + "_name"] != "":
+                number_of_skills = i
+                break
+        if number_of_skills> 0:
+            for i in range(number_of_skills):
+                if current_student["skill" + str(i) + "_name"] != db_student["skills"][i]["skill_name"]:
+                    print("skill name " + str(i), "\n", "generated", current_student["skill" + str(i) + "_name"], "\n", "db", db_student["skills"][i]["skill_name"])
+                    break
+
+                if current_student["skill" + str(i) + "_proficiency"] != db_student["skills"][i]["proficiency"]:
+                    print("skill proficiency " + str(i), "\n", "generated", current_student["skill" + str(i) + "_proficiency"], "\n", "db", db_student["skills"][i]["skill_proficiency"])
+                    break
+
+                if current_student["skill" + str(i) + "_description"] != db_student["skills"][i]["description"]:
+                    print("skill desc " + str(i), "\n", "generated", current_student["skill" + str(i) + "_description"], "\n", "db", db_student["skills"][i]["skill_description"])
+                    break
+        
+        #Files
+        #Links not doing links and files
+
+        #Industries
+        #Not assuming that they are in the same order for industries or role
+        ind_error = False
+        for i in range(len(current_student["industries_interested"])):
+            #Check that each industry generated is in the database insutries
+            if current_student["industries_interested"][i] not in db_student["industries"]:
+                print("industries", "\n", "generated", current_student["industries_interested"][i], "\n", "db ", db_student["industries"])
+                ind_error = True
+                break
+        if ind_error == True:
+            break
+
+        #Roles
+        ind_error = False
+        for i in range(len(current_student["micro_roles"])):
+            #Same process as industries
+            if current_student["micro_roles"][i] not in db_student["roles"]:
+                print("roles ", "\n", "generated ", current_student["micro_roles"][i], "\n db", db_student["roles"])
+                ind_error = True
+                break
+        if ind_error == True:
+            break
+
+        #Diversity Monitoring
+        if current_student["religion"] != db_student["diversity"]["religion"]:
+            print("religion " + str(i), "\n", "generated", current_student["religion"], "\n", "db", db_student["diversity"]["religion"])
+            break
+
+        if current_student["sexual_orientation"] != db_student["diversity"]["sexual_orientation"]:
+            print("sexual_orientation " , "\n", "generated", current_student["sexual_orientation"], "\n", "db", db_student["diversity"]["sexual_orientation"])
+            break
+        
+        if current_student["gender"] != db_student["diversity"]["gender"]:
+            print("gender " , "\n", "generated", current_student["gender"], "\n", "db", db_student["diversity"]["gender"])
+            break
+
+        if current_student["ethnic_group"] != db_student["diversity"]["ethnic_group"]:
+            print("ethnic_group " , "\n", "generated", current_student["relgion"], "\n", "db", db_student["diversity"]["ethnic_group"])
+            break
+
+        if current_student["disability"] != db_student["diversity"]["disability"]:
+            print("disability " , "\n", "generated", current_student["relgion"], "\n", "db", db_student["diversity"]["disability"])
+            break
+        
+        if current_student["parents_higher_education?"] != db_student["diversity"]["parents_higher_education"]:
+            print("parents_higher_education " , "\n", "generated", current_student["parents_higher_education?"], "\n", "db", db_student["diversity"]["parents_higher_education"])
+            break
+        
+        if current_student["school_meals?"] != db_student["diversity"]["school_meals"]:
+            print("school_meals " , "\n", "generated", current_student["school_meals?"], "\n", "db", db_student["diversity"]["school_meals"])
+            break
+        
+        #Legal
+        if current_student["allowed_to_work"] != db_student["allowed_to_work"]:
+            print("allowed to work " , "\n", "generated", current_student["allowed_to_work"], "\n", "db", db_student["allowed_to_work"])
+            break
+        
+        if current_student["visa"] != db_student["visa"]:
+            print("visa " , "\n", "generated", current_student["visa"], "\n", "db", db_student["visa"])
+            break
+
+
+
+
+
+        
+
+
+
+        
+
+
+
+
+
+
