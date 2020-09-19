@@ -19,21 +19,22 @@ def get_data(student_id):
         return {"statusCode":500, "error_code": 1, "body":"Internal server error"}
 
     try:
-        personal_SQL ="""SELECT first_name, middle_name, last_name, contact_email, phone_number, dob,
+        personal_SQL ="""SELECT first_name, middle_name, last_name, uni_email, phone_number, dob,
         alevel_institution, alevel_country_id, 
         gcse_institution, gcse_country_id,
         hex, visa_sponsorship, allowed_to_work_in_uk, alevel_institution_type, alevel_start_month, alevel_start_year, alevel_end_month, alevel_end_year,
-        gcse_institution_type, free_school_meals, parents_higher_education, disability, ethnic_group, gender sexual_orientation, religion
+        gcse_institution_type, free_school_meals, parents_higher_education, disability, ethnic_group, gender, sexual_orientation, religion, contact_email
         FROM student_personal_data
         WHERE student_id = %s;"""
         cur.execute(personal_SQL, student_id)
         info = cur.fetchall()[0]
         info_sorted = list(info)
-
+        print(len(info_sorted))
+        print(info_sorted[24])
         #Check that middle name exists
         if info_sorted[1] == None:
             info_sorted[1] = ""
-        personal_data_json = {"first_name": info_sorted[0], "middle_name": info_sorted[1], "last_name": info_sorted[2], "contact_email": info_sorted[3], "phone_number": info_sorted[4], "dob": datetime.strftime(info_sorted[5], "%d/%m/%Y")}
+        personal_data_json = {"first_name": info_sorted[0], "middle_name": info_sorted[1], "last_name": info_sorted[2], "contact_email": info_sorted[26], "phone_number": info_sorted[4], "dob": datetime.strftime(info_sorted[5], "%d/%m/%Y")}
         a_level_inst, a_level_country_id =  info_sorted[6], info_sorted[7]
         gcse_inst, gcse_country_id = info_sorted[8], info_sorted[9]
         student_hex, visa, allowed_to_work =  info_sorted[10], info_sorted[11], info_sorted[12]
@@ -41,6 +42,7 @@ def get_data(student_id):
         gcse_inst_type= info_sorted[18]
         free_school_meals, parents_higher_education, disability, ethnic_group = info_sorted[19], info_sorted[20], info_sorted[21], info_sorted[22]
         gender, sexual_orientation, religion = info_sorted[23], info_sorted[24], info_sorted[25]
+        
 
         #Statement for university education
         uni_SQL = """SELECT level, title, university_id, completed, year_of_study, graduation_month, graduation_year, grade, field_of_study_id
@@ -266,3 +268,4 @@ def get_data(student_id):
     except Exception as err:
         print(err)
         return {"statusCode": 400, "body": "Internal error", "error_code": 1}
+print(get_data(1))

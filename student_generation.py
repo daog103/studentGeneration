@@ -209,7 +209,7 @@ def create_list(length):
                         "Dance", "Design and Technology", "Drama", "Economics", "Engineering", "English", 
                         "Entertainment Technology", "Environmental Sciences", "Film", "Food", "French", "Further Mathematics",
                         "Geography", "German", "Gujarati", "Hebrew (Biblical)", "Hebrew (Modern)", "History", "History of Art",
-                        "ICT", "Italian", "Languages", "Latin", "Law", "Mathematics", "Media Studies", "Music", "Panjabi", 
+                        "ICT", "Italian", "Latin", "Law", "Mathematics", "Media Studies", "Music", "Panjabi", 
                         "Performing Arts", "Persion", "Philosophy", "Physical Education", "Physics", "Polish", "Politics", 
                         "Portuguese", "Psychology", "Religious Studies", "Sociology", "Spanish", "Statistics", "Turkish", 
                         "Urdu", "General"]
@@ -223,7 +223,7 @@ def create_list(length):
                      "Dance", "Design and Technology", "Drama", "Economics", "Engineering",
                      "English", "Entertainment Technology", "Environmental Sciences", "Film", "Food", "French",
                      "Further Mathematics", "Geography", "German", "Gujarati", "Hebrew (Biblical)", "Hebrew (Modern)",
-                     "History", "History of Art", "ICT", "Italian", "Languages", "Latin", "Law", "Mathematics", 
+                     "History", "History of Art", "ICT", "Italian", "Latin", "Law", "Mathematics", 
                      "Media Studies", "Music", "Panjabi", "Performing Arts", "Persion", "Philosophy", "Physical Education", 
                      "Physics", "Polish", "Politics", "Portuguese", "Psychology", "Religious Studies", "Science - Core", 
                      "Science - Additional", "Sociology", "Spanish", "Statistics", "Turkish", "Urdu"]
@@ -623,32 +623,34 @@ for a in range(1, len(total_dict)):
         
 total_dict.pop(0)
 print(total_dict[0])
-{'hex': '#dd59be', 'degree_name': 'Physics Bsc', 'university': 'University of Durham', 'year_of_study': 'Completed', 'test_taken': 'false', 'test_score': 'n_a', 'has_cv': 'false', 
-'roles': ['Commercial Banking - General', 'Law - General', 'Marketing - General'],
- 'past_education': {'completed_degrees': [{'degree_level': 'Bachelors', 'degree_name': 'Physics Bsc', 'university': 'University of Durham', 'year_of_study': 'Completed', 'grade': '1st', 
- 'graduation_month': 'September', 'graduation_year': 2018}], 'a_levels': {'institution_name': 'St Marys School', 'country': 'United Kingdom', 'grades': 
- [{'qualification_type': 'A Level', 'subject': 'Physics', 'grade': 'A*'}, {'qualification_type': 'A Level', 'subject': 'Chemistry', 'grade': 'A*'},
-  {'qualification_type': 'A Level', 'subject': 'Mathematics', 'grade': 'A*'}]}, 'gcses': {'institution_name': 'St Marys School',
-   'grades': [{'qualification_type': 'GCSE', 'subject': 'Physics', 'grade': 'A*'}, {'qualification_type': 'GCSE', 'subject': 'English Language', 'grade': 'A*'}]}},
-    'skills': [{'skill_name': 'Critical Thinking', 'proficiency': 'advanced', 'description': 'I can think critically at any situation.'}, {'skill_name': 'Data Analysis',
-     'proficiency': 'intermediate', 'description': 'Having done Physics, I can analyse large data sets effectively, gaining great insight.'},
-      {'skill_name': 'Communication', 'proficiency': 'advanced', 'description': 'Having been a tutor and been a part of many executive teams at university, I am very effective at communicating advanced ideas as part of a small or large team.'}, 
-      {'skill_name': 'Software Testing', 'proficiency': 'intermediate', 'description': 'I have tested lots of software'},
-       {'skill_name': 'Python', 'proficiency': 'advanced', 'description': 'Very experienced using Python on a variety of modules, and projects.'},
-        {'skill_name': 'JavaScript', 'proficiency': 'intermediate', 'description': 'I have some experience building programs on JS having helped build this website.'},
-         {'skill_name': 'Analytical Reasoning', 'proficiency': 'intermediate', 'description': 'I am a very analytically focussed person.'}, 
-         {'skill_name': 'Amazon Web Services', 'proficiency': 'intermediate', 'description': 'I have great experience using the following AWS services: Lambda, S3, API Gateway, Cognito and SQS. Having learned and got experience all in the space of 2 months. This website uses all of these services.'}], 
-         'experience': [{'type': 'Internship', 'organisation_name': 'Internly', 'role': 'Software Developer', 'location': 'Newcastle', 'start_month': 6, 'end_month': 7, 'start_year': 2020, 'end_year': 2020, 'description': 'I worked as a software developer at Internly'}], 
-         'languages': [{'language_name': 'Afrikaans', 'proficiency': 'native/bilingual', 'description': 'Testing that it works'}], 
-         'links': [], 'industries': ['Academia', 'Agriculture', 'Architecture', 'Art', 'Banking & Finance', 'Consulting', 'Professional Services', 'Marketing', 'Media', 'HR', 'Consumer & Retail', 'Automotive & Transport', 'Charity & Public Sector', 'Education', 'Energy', 'Engineering & Industrial', 'Hospitality', 'Insurance', 'Law', 'Pharmaceutical', 'Property & Construction', 'Supply Chain and Logistics', 'Other Sectors'], 
-         'visa': 'no', 'allowed_to_work': 'yes'}
-print(get_all_data.get_data(1))
+# {'hex': '#dd59be', 'degree_name': 'Physics Bsc', 'university': 'University of Durham', 'year_of_study': 'Completed', 'test_taken': 'false', 'test_score': 'n_a', 'has_cv': 'false', 
+# 'roles': ['Commercial Banking - General', 'Law - General', 'Marketing - General'],
+#  'past_education': {'completed_degrees': [{'degree_level': 'Bachelors', 'degree_name': 'Physics Bsc', 'university': 'University of Durham', 'year_of_study': 'Completed', 'grade': '1st', 
+#  'graduation_month': 'September', 'graduation_year': 2018}], 'a_levels': {'institution_name': 'St Marys School', 'country': 'United Kingdom', 'grades': 
+#  [{'qualification_type': 'A Level', 'subject': 'Physics', 'grade': 'A*'}, {'qualification_type': 'A Level', 'subject': 'Chemistry', 'grade': 'A*'},
+#   {'qualification_type': 'A Level', 'subject': 'Mathematics', 'grade': 'A*'}]}, 'gcses': {'institution_name': 'St Marys School',
+#    'grades': [{'qualification_type': 'GCSE', 'subject': 'Physics', 'grade': 'A*'}, {'qualification_type': 'GCSE', 'subject': 'English Language', 'grade': 'A*'}]}},
+#     'skills': [{'skill_name': 'Critical Thinking', 'proficiency': 'advanced', 'description': 'I can think critically at any situation.'}, {'skill_name': 'Data Analysis',
+#      'proficiency': 'intermediate', 'description': 'Having done Physics, I can analyse large data sets effectively, gaining great insight.'},
+#       {'skill_name': 'Communication', 'proficiency': 'advanced', 'description': 'Having been a tutor and been a part of many executive teams at university, I am very effective at communicating advanced ideas as part of a small or large team.'}, 
+#       {'skill_name': 'Software Testing', 'proficiency': 'intermediate', 'description': 'I have tested lots of software'},
+#        {'skill_name': 'Python', 'proficiency': 'advanced', 'description': 'Very experienced using Python on a variety of modules, and projects.'},
+#         {'skill_name': 'JavaScript', 'proficiency': 'intermediate', 'description': 'I have some experience building programs on JS having helped build this website.'},
+#          {'skill_name': 'Analytical Reasoning', 'proficiency': 'intermediate', 'description': 'I am a very analytically focussed person.'}, 
+#          {'skill_name': 'Amazon Web Services', 'proficiency': 'intermediate', 'description': 'I have great experience using the following AWS services: Lambda, S3, API Gateway, Cognito and SQS. Having learned and got experience all in the space of 2 months. This website uses all of these services.'}], 
+#          'experience': [{'type': 'Internship', 'organisation_name': 'Internly', 'role': 'Software Developer', 'location': 'Newcastle', 'start_month': 6, 'end_month': 7, 'start_year': 2020, 'end_year': 2020, 'description': 'I worked as a software developer at Internly'}], 
+#          'languages': [{'language_name': 'Afrikaans', 'proficiency': 'native/bilingual', 'description': 'Testing that it works'}], 
+#          'links': [], 'industries': ['Academia', 'Agriculture', 'Architecture', 'Art', 'Banking & Finance', 'Consulting', 'Professional Services', 'Marketing', 'Media', 'HR', 'Consumer & Retail', 'Automotive & Transport', 'Charity & Public Sector', 'Education', 'Energy', 'Engineering & Industrial', 'Hospitality', 'Insurance', 'Law', 'Pharmaceutical', 'Property & Construction', 'Supply Chain and Logistics', 'Other Sectors'], 
+#          'visa': 'no', 'allowed_to_work': 'yes'}
+# print(get_all_data.get_data(1))
 month_to_number = {"January": "01", "February": "02", "March": "03", "April": "04", "May": "05", "June" : "06", "July": "07", "August": "08", "September": "09", "October": "10", "November": "11", "December": "12"}
 starting_student_id = 1 #"ADD VALUE HERE"
 for i in range(len(total_dict)):
     #current student is generated, db_student is what the student looks like in the database
     current_student = total_dict[i]
+    print("here")
     db_student = get_all_data.get_data(starting_student_id)
+    print(db_student)
 
     #Personal Information check first
     if current_student["firstname"] != db_student["personal_info"]["first_name"]:
